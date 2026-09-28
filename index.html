@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>אקשן! — כל הסרטונים מהתחרות | AI Lab</title>
+<meta name="description" content="13 סרטונים שילדים ונוער יצרו בבינה מלאכותית בתחרות אקשן! של AI Lab.">
+<link rel="icon" href="https://ai-lab.co.il/favicon.ico">
+<style>
+  :root{--bg:#0b0d1a;--card:#141830;--line:rgba(255,255,255,.08);--txt:#e2e5ff;--muted:rgba(226,229,255,.66);--accent:#7c5cff;--wa:#25d366}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:"Heebo","Assistant",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+  header{padding:40px 16px 8px;text-align:center}
+  header .brand{display:inline-block;font-weight:800;letter-spacing:.5px;color:var(--muted);font-size:.9rem;margin-bottom:10px}
+  h1{margin:0 0 8px;font-size:clamp(1.6rem,4vw,2.4rem)}
+  header p{margin:0 auto;max-width:640px;color:var(--muted)}
+  main{max-width:1100px;margin:0 auto;padding:24px 16px 60px}
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .thumb{position:relative;aspect-ratio:16/9;background:#000;cursor:pointer}
+  .thumb img,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb video{object-fit:contain}
+  .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:#fff;background:rgba(0,0,0,.25);transition:background .2s}
+  .thumb:hover .play{background:rgba(0,0,0,.4)}
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px}
+  .meta b{font-size:1.05rem}
+  .meta small{display:block;color:var(--muted);font-size:.8rem;margin-top:2px}
+  .share{flex-shrink:0;background:var(--wa);color:#062b16;border:0;border-radius:999px;padding:8px 14px;font-weight:700;font-size:.85rem;cursor:pointer;text-decoration:none}
+  .cta{margin-top:48px;text-align:center;padding:28px 16px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+  .cta a{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;text-decoration:none;padding:10px 22px;border-radius:999px;font-weight:700}
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 16px 30px}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">AI Lab</span>
+  <h1>אקשן! — כל הסרטונים</h1>
+  <p>13 סרטונים שילדים ונוער יצרו בבינה מלאכותית. לכל אחד מהם יש רעיון, והמצאה שפותרת בעיה אמיתית.</p>
+</header>
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="cta">
+    <div><b>התחרות הבאה מתפרסמת בקהילה</b></div>
+    <div style="color:var(--muted);margin-top:4px">הקהילה של AI Lab פתוחה להורים, לילדים ולנוער — תחרויות, רעיונות ליצירה עם בינה מלאכותית וטיפים להורים, בחינם.</div>
+    <a href="https://ai-lab.co.il/" rel="noopener">לאתר AI Lab</a>
+  </div>
+</main>
+<footer>© AI Lab · הסרטונים נוצרו על ידי המשתתפים בתחרות "אקשן!" (אוגוסט 2026)</footer>
+<script>
+const VIDEOS = [
+  { id: '1y-wrNRlHIngIdPlRXz4EpY4N_75sK6kD', name: 'איתי',   title: 'רחפנים שמסיירים מעל הים ומצילים טובעים' },
+  { id: '1K06a4IysVu_L6FTOOdtBQAMVyDUlsG3x', name: 'טום' },
+  { id: '1NX3IAoqfoaFXBWXekjdTjueo7k4U8UHk', name: 'עמית' },
+  { id: '1OQKfZ9mzWozngp2UUtK8V7JwFZyTKGvP', name: 'גילעד' },
+  { id: '19mv4jBEc_WArBoQT00n8dwB3p42kNNS0', name: 'עוז' },
+  { id: '1ldKz4vVvxnT5U_S89HEV9jTnfjuzZ9KU', name: 'טום' },
+  { id: '1A5xM8zGaflPq4dGo61eO7r5dp37woN-t', name: 'עמית' },
+  { id: '11DhU59-aPaIj2MYXrT90t7NLOIvDwhjc', name: 'מאיה' },
+  { id: '1fkx4zKghO21m1gogKZiGMaxeE_J-37as', name: 'נדב',    title: 'מכונה שמנקה את החוף — ומייצרת ממנו לגו' },
+  { id: '193HlpJGU5g2clA-1SPGhB1u2croH6GHu', name: 'Roei' },
+  { id: '1vPqlLqflTg35YpsQ41L3zBhPJZ1WApWF', name: 'Roei' },
+  { id: '1_PHmG1fEeVm_TWeLLoyoNLZoXDqrXtl1', name: 'יונתן',  title: 'הצלה לרגע שהסוללה נגמרת ואין אינטרנט בחוץ' },
+  { id: '1vAkS4lDsaM20jIIw7_xuanm2Cyed1zPm', name: 'שרהשיר', title: 'תנור שמחובר למקרר ומכין ארוחה בלחיצת כפתור' }
+];
+const base = location.href.split('#')[0].replace(/[^/]*$/, '');
+const grid = document.getElementById('grid');
+VIDEOS.forEach(v => {
+  const card = document.createElement('article'); card.className = 'card'; card.id = v.id;
+  const share = `https://wa.me/?text=${encodeURIComponent('הסרטון של ' + v.name + ' מתחרות אקשן! של AI Lab: ' + base + '#' + v.id)}`;
+  card.innerHTML = `<div class="thumb"><img src="thumbs/${v.id}.jpg" alt="" loading="lazy"><span class="play">▶</span></div>
+    <div class="meta"><div><b>הסרטון של ${v.name}</b>${v.title ? `<small>${v.title}</small>` : ''}</div>
+    <a class="share" href="${share}" target="_blank" rel="noopener">שתפו</a></div>`;
+  card.querySelector('.thumb').addEventListener('click', function () {
+    if (this.querySelector('video')) return;
+    const vid = document.createElement('video');
+    vid.src = `videos/${v.id}.mp4`; vid.poster = `thumbs/${v.id}.jpg`;
+    vid.controls = true; vid.autoplay = true; vid.playsInline = true;
+    vid.setAttribute('playsinline', ''); vid.setAttribute('controlslist', 'nodownload');
+    this.innerHTML = ''; this.appendChild(vid);
+  });
+  grid.appendChild(card);
+});
+if (location.hash) { const el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+</script>
+</body>
+</html>
